@@ -776,3 +776,19 @@
     <script src="/static/app.js?t=1736053100"></script></script>
 </body>
 </html>
+
+<script>
+  function updateAndroidMedia(title, artist, isPlaying) {
+    if (window.Android && Android.updateNowPlaying) {
+      Android.updateNowPlaying(title, artist, isPlaying);
+    }
+  }
+
+  function androidPlay() {
+    window.Android?.play();
+  }
+
+  function androidPause() {
+    window.Android?.pause();
+  }
+</script>
