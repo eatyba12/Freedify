@@ -3,6 +3,28 @@
  * Enhanced search with albums, artists, playlists, and Spotify URL support
  */
 
+function notifyAndroidNowPlaying(track) {
+  try {
+    if (!window.Android || typeof Android.updateNowPlaying !== "function") return;
+
+    const title =
+      (track && (track.title || track.name)) ||
+      document.getElementById("player-title")?.textContent ||
+      "Freedify";
+
+    const artist =
+      (track && (track.artist || track.author)) ||
+      document.getElementById("player-artist")?.textContent ||
+      "";
+
+    const artUrl = document.getElementById("player-art")?.src || "";
+    const isPlaying = window.audioPlayer ? !audioPlayer.paused : true;
+
+    Android.updateNowPlaying(title, artist, isPlaying, artUrl);
+  } catch (e) {}
+}
+
+
 // ========== STATE ==========
 const state = {
     queue: [],
