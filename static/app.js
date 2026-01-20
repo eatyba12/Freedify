@@ -1825,7 +1825,8 @@ function updatePlayerUI() {
     } else if (playerDJInfo) {
         playerDJInfo.classList.add('hidden');
     }
-    
+        notifyAndroidNowPlaying(track);
+
     // Update Mini Player
     if (pipWindow) updateMiniPlayer();
 }
@@ -2069,6 +2070,7 @@ function togglePlay() {
     } else {
         player.pause();
     }
+      notifyAndroidNowPlaying();
 }
 
 function playNext() {
